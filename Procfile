@@ -1,0 +1,1 @@
+web: gunicorn olympic_history_athletes.wsgi --log-file -
