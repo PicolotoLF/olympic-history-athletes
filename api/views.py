@@ -5,8 +5,8 @@ from .serializers import *
 from .services import *
 
 # download_csv_file_from_kaggle()
-insert_data()
-#
+# insert_data()
+
 
 class AthleteList(viewsets.ModelViewSet):
 
