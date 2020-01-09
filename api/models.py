@@ -1,27 +1,13 @@
 from django.db import models
 
 
-class Attributes(models.Model):
-    """This it's another table because if an athlete have more than one participation, attributes like
-    Age, Height and Wight may vary over the years."""
-
-    class Meta:
-        db_table = 'attributes'
-
-    id = models.IntegerField(primary_key=True)
-    age = models.IntegerField(null=True)
-    height = models.IntegerField(null=True)
-    weight = models.IntegerField(null=True)
-    year = models.IntegerField(null=True)
-
-
 class Games(models.Model):
 
     class Meta:
         db_table = 'games'
 
     id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
 
 
 class Team(models.Model):
@@ -30,8 +16,7 @@ class Team(models.Model):
         db_table = 'team'
 
     id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=255)
-    noc = models.CharField(max_length=15)
+    name = models.CharField(max_length=255, unique=True)
 
 
 class Season(models.Model):
@@ -39,7 +24,7 @@ class Season(models.Model):
         db_table = 'season'
 
     id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=255, null=True)
+    name = models.CharField(max_length=255, null=True, unique=True)
 
 
 class City(models.Model):
@@ -47,7 +32,7 @@ class City(models.Model):
         db_table = 'city'
 
     id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=255, null=True)
+    name = models.CharField(max_length=255, null=True, unique=True)
 
 
 class Sport(models.Model):
@@ -55,7 +40,7 @@ class Sport(models.Model):
         db_table = 'sport'
 
     id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=255, null=True)
+    name = models.CharField(max_length=255, null=True, unique=True)
 
 
 class Event(models.Model):
@@ -63,7 +48,7 @@ class Event(models.Model):
         db_table = 'event'
 
     id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=255, null=True)
+    name = models.CharField(max_length=255, null=True, unique=True)
 
 
 class Medal(models.Model):
@@ -71,7 +56,7 @@ class Medal(models.Model):
         db_table = 'medal'
 
     id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=255, null=True)
+    name = models.CharField(max_length=255, null=True, unique=True)
 
 
 class Athlete(models.Model):
@@ -82,7 +67,6 @@ class Athlete(models.Model):
     name = models.CharField(max_length=255)
     sex = models.CharField(max_length=10)
 
-    attributes = models.ForeignKey(Attributes, on_delete=models.CASCADE)
     games = models.ForeignKey(Games, on_delete=models.CASCADE)
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
@@ -90,3 +74,22 @@ class Athlete(models.Model):
     sport = models.ForeignKey(Sport, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     medal = models.ForeignKey(Medal, on_delete=models.CASCADE)
+
+
+class Attributes(models.Model):
+    """This it's another table because if an athlete have more than one participation, attributes like
+    Age, Height and Wight may vary over the years."""
+
+    class Meta:
+        db_table = 'attributes'
+
+    age = models.IntegerField(null=True)
+    height = models.DecimalField(max_digits=15, decimal_places=2, null=True)
+    weight = models.DecimalField(max_digits=15, decimal_places=2, null=True)
+    year = models.IntegerField(null=True)
+
+    athlete = models.OneToOneField(
+        Athlete,
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
