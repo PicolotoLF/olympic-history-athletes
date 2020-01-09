@@ -1,18 +1,6 @@
 from django.db import models
 
 
-class Athlete(models.Model):
-    class Meta:
-        db_table = 'athlete'
-
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=255)
-    sex = models.CharField(max_length=10)
-
-    def __str__(self):
-        return self.name
-
-
 class Attributes(models.Model):
     """This it's another table because if an athlete have more than one participation, attributes like
     Age, Height and Wight may vary over the years."""
@@ -26,8 +14,6 @@ class Attributes(models.Model):
     weight = models.DecimalField(max_digits=15, decimal_places=2, null=True)
     year = models.IntegerField(null=True)
 
-    athlete = models.ForeignKey(Athlete, on_delete=models.CASCADE)
-
 
 class Games(models.Model):
 
@@ -37,19 +23,13 @@ class Games(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=255)
 
-    athlete = models.ForeignKey(Athlete, on_delete=models.CASCADE)
-
 
 class Team(models.Model):
 
     class Meta:
         db_table = 'team'
 
-    athlete = models.OneToOneField(
-        Athlete,
-        on_delete=models.CASCADE,
-        primary_key=True,
-    )
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=255)
     noc = models.CharField(max_length=15)
 
@@ -61,8 +41,6 @@ class Season(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=255, null=True)
 
-    athlete = models.ForeignKey(Athlete, on_delete=models.CASCADE)
-
 
 class City(models.Model):
     class Meta:
@@ -70,8 +48,6 @@ class City(models.Model):
 
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=255, null=True)
-
-    athlete = models.ForeignKey(Athlete, on_delete=models.CASCADE)
 
 
 class Sport(models.Model):
@@ -81,8 +57,6 @@ class Sport(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=255, null=True)
 
-    athlete = models.ForeignKey(Athlete, on_delete=models.CASCADE)
-
 
 class Event(models.Model):
     class Meta:
@@ -90,8 +64,6 @@ class Event(models.Model):
 
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=255, null=True)
-
-    athlete = models.ForeignKey(Athlete, on_delete=models.CASCADE)
 
 
 class Medal(models.Model):
@@ -101,4 +73,20 @@ class Medal(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=255, null=True)
 
-    athlete = models.ForeignKey(Athlete, on_delete=models.CASCADE)
+
+class Athlete(models.Model):
+    class Meta:
+        db_table = 'athlete'
+
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=255)
+    sex = models.CharField(max_length=10)
+
+    attributes = models.ForeignKey(Attributes, on_delete=models.CASCADE)
+    games = models.ForeignKey(Games, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    season = models.ForeignKey(Season, on_delete=models.CASCADE)
+    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    sport = models.ForeignKey(Sport, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    medal = models.ForeignKey(Medal, on_delete=models.CASCADE)
