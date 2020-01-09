@@ -9,6 +9,9 @@ class Athlete(models.Model):
     name = models.CharField(max_length=255)
     sex = models.CharField(max_length=10)
 
+    def __str__(self):
+        return self.name
+
 
 class Attributes(models.Model):
     """This it's another table because if an athlete have more than one participation, attributes like
@@ -19,8 +22,8 @@ class Attributes(models.Model):
 
     id = models.IntegerField(primary_key=True)
     age = models.IntegerField(null=True)
-    height = models.IntegerField(null=True)
-    weight = models.IntegerField(null=True)
+    height = models.DecimalField(max_digits=15, decimal_places=2, null=True)
+    weight = models.DecimalField(max_digits=15, decimal_places=2, null=True)
     year = models.IntegerField(null=True)
 
     athlete = models.ForeignKey(Athlete, on_delete=models.CASCADE)
