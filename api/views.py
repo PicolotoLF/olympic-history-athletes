@@ -4,7 +4,7 @@ from .models import Athlete
 from .serializers import *
 from .services import *
 
-# download_csv_file_from_kaggle()
+download_csv_file_from_kaggle()
 # insert_data()
 
 
