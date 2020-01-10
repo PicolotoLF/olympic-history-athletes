@@ -27,18 +27,18 @@ To CREATE some object use the DELETE http method:
 <h2>Filtering Attributes</h2>
 To filter attribute make a request to endpoint /api/<category>?name=<attribute>
 
-Example:
-https://olympic-history-athletes.herokuapp.com/api/sport/?name=Judo
+<p>Example:
+<p>https://olympic-history-athletes.herokuapp.com/api/sport/?name=Judo
 
 
 <h2>Filtering Athletes</h2>
 To filter athlete make a request to endpoint /api/athletes_search?<params>
-Not work searching by the parameter id, just for the name.
-It's able to put multiple filter.
-Example:
-https://olympic-history-athletes.herokuapp.com/api/athletes_search?medal=Silver&season=Summer
+<p>Not work searching by the parameter id, just for the name.
+<p>It's able to put multiple filter.
+<p>Example:
+<p>https://olympic-history-athletes.herokuapp.com/api/athletes_search?medal=Silver&season=Summer
 
-Available filters:
+<h3>Available filters:</h3>
 - games
 - team
 - season
