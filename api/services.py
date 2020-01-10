@@ -1,4 +1,5 @@
 import os
+import time
 
 import kaggle
 import csv
@@ -90,6 +91,7 @@ def factory_to_check_exists(object, row):
     try:
         new_object = object.objects.create(name=row[attribute_name])
         new_object.save()
+        time.sleep(5)
     except IntegrityError:
         q_object = object.objects.filter(name=row[attribute_name])
         return q_object.first()
