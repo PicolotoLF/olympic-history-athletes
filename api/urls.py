@@ -15,4 +15,5 @@ router.register(r'medals', views.MedalView)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('athletes_search/', views.AthleteFilter.as_view()),
 ]

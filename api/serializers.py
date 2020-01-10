@@ -58,6 +58,13 @@ class MedalSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class AthleteFilterSerializer(serializers.ModelSerializer):
+    class Meta:
+
+        model = Athlete
+        fields = "__all__"
+
+
 class AthleteSerializer(serializers.ModelSerializer):
     attributes = AttributesSerializer(read_only=True)
     games = GamesSerializer(read_only=True)
