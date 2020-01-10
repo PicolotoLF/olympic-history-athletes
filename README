@@ -1,9 +1,34 @@
-
 To schedule the tasks it necessary run:
 "python manage.py process_tasks"
+
 
 To UPDATE some object use the PUT http method:
 PUT https://olympic-history-athletes.herokuapp.com/api/{category}/{id}/
 
+
 To DELETE some object use the DELETE http method:
 DELETE https://olympic-history-athletes.herokuapp.com/api/{category}/{id}/
+
+
+Filtering Attributes
+To filter attribute make a request to endpoint /api/<category>?name=<attribute>
+
+Example:
+https://olympic-history-athletes.herokuapp.com/api/sport/?name=Judo
+
+
+Filtering Athletes
+To filter athlete make a request to endpoint /api/athletes_search?<params>
+Not work searching by the parameter id, just for the name.
+It's able to put multiple filter.
+Example:
+https://olympic-history-athletes.herokuapp.com/api/athletes_search?medal=Silver&season=Summer
+
+Available filters:
+- games
+- team
+- season
+- city
+- sport
+- event
+- medal
