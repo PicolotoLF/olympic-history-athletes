@@ -1,12 +1,10 @@
 import os
-import time
 
 import kaggle
 import csv
 
 from django.db import IntegrityError
 from django.conf import settings
-from django.db import transaction
 from .models import *
 
 
@@ -77,12 +75,11 @@ def create_objects(row):
         event=event,
         medal=medal
     )
-    with transaction.atomic():
-        athlete.save()
+
+    athlete.save()
     attribute = Attributes.objects.create(age=row["Age"], height=row["Height"],
                                           weight=row["Weight"], year=row["Year"], athlete=athlete)
-    with transaction.atomic():
-        attribute.save()
+    attribute.save()
 
 
 def factory_to_check_exists(object, row):
@@ -90,13 +87,12 @@ def factory_to_check_exists(object, row):
     attribute_name = object.__name__
     print(row[attribute_name])
 
-    try:
-        new_object = object.objects.create(name=row[attribute_name])
-        with transaction.atomic():
-            new_object.save()
+    # try:
+    new_object = object.objects.create(name=row[attribute_name])
+    new_object.save()
 
-    except IntegrityError:
-        q_object = object.objects.filter(name=row[attribute_name])
-        return q_object.first()
-    return new_object
+    # except IntegrityError:
+    #     q_object = object.objects.filter(name=row[attribute_name])
+    #     return q_object.first()
+    # return new_object
 
