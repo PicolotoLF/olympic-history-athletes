@@ -87,12 +87,12 @@ def factory_to_check_exists(object, row):
     attribute_name = object.__name__
     print(row[attribute_name])
 
-    # try:
-    new_object = object.objects.create(name=row[attribute_name])
-    new_object.save()
+    try:
+        new_object = object.objects.create(name=row[attribute_name])
+        new_object.save()
 
-    # except IntegrityError:
-    #     q_object = object.objects.filter(name=row[attribute_name])
-    #     return q_object.first()
-    # return new_object
+    except IntegrityError:
+        q_object = object.objects.filter(name=row[attribute_name])
+        return q_object.first()
+    return new_object
 

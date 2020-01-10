@@ -6,7 +6,7 @@ class Games(models.Model):
     class Meta:
         db_table = 'games'
 
-    id = models.IntegerField(primary_key=True)
+    id = models.IntegerField(primary_key=True, auto_created=True)
     name = models.CharField(max_length=255, unique=True)
 
 
@@ -15,7 +15,7 @@ class Team(models.Model):
     class Meta:
         db_table = 'team'
 
-    id = models.IntegerField(primary_key=True)
+    id = models.IntegerField(primary_key=True, auto_created=True)
     name = models.CharField(max_length=255, unique=True)
 
 
@@ -23,7 +23,7 @@ class Season(models.Model):
     class Meta:
         db_table = 'season'
 
-    id = models.IntegerField(primary_key=True)
+    id = models.IntegerField(primary_key=True, auto_created=True)
     name = models.CharField(max_length=255, null=True, unique=True)
 
 
@@ -31,7 +31,7 @@ class City(models.Model):
     class Meta:
         db_table = 'city'
 
-    id = models.IntegerField(primary_key=True)
+    id = models.IntegerField(primary_key=True, auto_created=True)
     name = models.CharField(max_length=255, null=True, unique=True)
 
 
@@ -39,7 +39,7 @@ class Sport(models.Model):
     class Meta:
         db_table = 'sport'
 
-    id = models.IntegerField(primary_key=True)
+    id = models.IntegerField(primary_key=True, auto_created=True)
     name = models.CharField(max_length=255, null=True, unique=True)
 
 
@@ -47,7 +47,7 @@ class Event(models.Model):
     class Meta:
         db_table = 'event'
 
-    id = models.IntegerField(primary_key=True)
+    id = models.IntegerField(primary_key=True, auto_created=True)
     name = models.CharField(max_length=255, null=True, unique=True)
 
 
@@ -55,7 +55,7 @@ class Medal(models.Model):
     class Meta:
         db_table = 'medal'
 
-    id = models.IntegerField(primary_key=True)
+    id = models.IntegerField(primary_key=True, auto_created=True)
     name = models.CharField(max_length=255, null=True, unique=True)
 
 
