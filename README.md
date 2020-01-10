@@ -2,7 +2,7 @@
 
 ## Setup Tasks
 To run the routine to get the csv from Kaggle and save in database, it necessary run the command:
-<p><code>python manage.py process_tasks"</code>
+<p><code>python manage.py process_tasks</code>
 
 
 <h2>Methods</h2>
