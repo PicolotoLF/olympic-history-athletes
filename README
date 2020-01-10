@@ -1,3 +1,9 @@
 
 To schedule the tasks it necessary run:
 "python manage.py process_tasks"
+
+To UPDATE some object use the PUT http method:
+PUT https://olympic-history-athletes.herokuapp.com/api/{category}/{id}/
+
+To DELETE some object use the DELETE http method:
+DELETE https://olympic-history-athletes.herokuapp.com/api/{category}/{id}/
