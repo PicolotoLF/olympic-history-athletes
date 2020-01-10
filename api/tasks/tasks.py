@@ -9,7 +9,7 @@ def update_data_from_kaggle():
     download_csv_file_from_kaggle()
 
 
-@background(schedule=120)
+@background(schedule=5)
 def insert_data_from_kaggle():
     print("Inserting data in database...")
     insert_data()
