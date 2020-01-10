@@ -1,6 +1,6 @@
-<h1>Olympic History Athletes API</h1>
+# Olympic History Athletes API
 
-=======Setup Tasks=======
+## Setup Tasks
 To run the routine to get the csv from Kaggle and save in database, it necessary run the command:
 <code>python manage.py process_tasks"</code>
 
