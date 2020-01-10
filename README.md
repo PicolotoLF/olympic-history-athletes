@@ -6,22 +6,22 @@ To run the routine to get the csv from Kaggle and save in database, it necessary
 
 
 <h2>Methods</h2>
-
+<p>
 <h3>Update</h3>
 To UPDATE some object use the PUT http method:
-PUT https://olympic-history-athletes.herokuapp.com/api/{category}/{id}/
-payload:
-{"name": {new_attribute}}
+<p>PUT https://olympic-history-athletes.herokuapp.com/api/{category}/{id}/
+<p>payload:
+<p>{"name": {new_attribute}}
 
 <h3>Delete</h3>
 To DELETE some object use the DELETE http method:
-DELETE https://olympic-history-athletes.herokuapp.com/api/{category}/{id}/
+<p>DELETE https://olympic-history-athletes.herokuapp.com/api/{category}/{id}/
 
 <h3>Insert</h3>
 To CREATE some object use the DELETE http method:
-POST https://olympic-history-athletes.herokuapp.com/api/{category}
-payload:
-{"name": {new_attribute}}
+<p>POST https://olympic-history-athletes.herokuapp.com/api/{category}
+<p>payload:
+<p>{"name": {new_attribute}}
 
 
 <h2>Filtering Attributes</h2>
