@@ -39,10 +39,12 @@ To filter athlete make a request to endpoint /api/athletes_search?<params>
 <p>https://olympic-history-athletes.herokuapp.com/api/athletes_search?medal=Silver&season=Summer
 
 <h3>Available filters:</h3>
-- games
-- team
-- season
-- city
-- sport
-- event
-- medal
+<ul>
+  <li>games</li>
+  <li>team</li>
+  <li>season</li>
+  <li>city</li>
+  <li>sport</li>
+  <li>event</li>
+  <li>medal</li>
+</ul>
