@@ -2,7 +2,7 @@
 
 ## Setup Tasks
 To run the routine to get the csv from Kaggle and save in database, it necessary run the command:
-<code>python manage.py process_tasks"</code>
+<p><code>python manage.py process_tasks"</code>
 
 
 <h2>Methods</h2>
@@ -11,7 +11,7 @@ To run the routine to get the csv from Kaggle and save in database, it necessary
 To UPDATE some object use the PUT http method:
 <p>PUT https://olympic-history-athletes.herokuapp.com/api/{category}/{id}/
 <p>payload:
-<p>{"name": {new_attribute}}
+<p><code>{"name": {new_attribute}}</code>
 
 <h3>Delete</h3>
 To DELETE some object use the DELETE http method:
@@ -21,7 +21,7 @@ To DELETE some object use the DELETE http method:
 To CREATE some object use the DELETE http method:
 <p>POST https://olympic-history-athletes.herokuapp.com/api/{category}
 <p>payload:
-<p>{"name": {new_attribute}}
+<p><code>{"name": {new_attribute}}</code>
 
 
 <h2>Filtering Attributes</h2>
