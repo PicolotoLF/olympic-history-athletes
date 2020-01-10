@@ -1,3 +1,4 @@
+<b>Setup tasks</b>
 To schedule the tasks it necessary run:
 "python manage.py process_tasks"
 
