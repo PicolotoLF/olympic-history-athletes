@@ -8,7 +8,6 @@ from django.conf import settings
 from .models import *
 
 
-
 # TODO
 def download_csv_file_from_kaggle(name_of_dataset='heesoo37/120-years-of-olympic-history-athletes-and-results'):
     """Using auth with environment variable, read more: https://github.com/Kaggle/kaggle-api"""
@@ -19,23 +18,24 @@ def download_csv_file_from_kaggle(name_of_dataset='heesoo37/120-years-of-olympic
 
 
 # TODO: change file_name
-def insert_data(file_name="athlete_events", max_id=50):
+def insert_data(file_name="athlete_events", qtd=50):
     """
-    :param qtd_rows: Quantity of rows to format
-    :param from_line: The first line to format
+    :param qtd_rows: Quantity of rows to insert
     :return: list of objects to input
     """
-    Medal.objects.all().delete()
-    # Attributes.objects.all().delete()
-    q_object = Medal.objects.filter(name=None)
+    if Athlete.objects.count() > 0:
+        last_row = Athlete.objects.latest('id').id
+    else:
+        last_row = 0
+    max_id = last_row + qtd
     path = os.path.join(settings.BASE_DIR, '../api/csvfile/{}.csv'.format(file_name))
     with open(path, 'r') as f:
         reader = csv.DictReader(f, delimiter=',', quotechar='"')
-        # last_row = Athlete.objects.latest('id')
+
         for row in reader:
             # NOTE(picolotoe): Avoid new tries to insert rows already exist
-            # if int(row["ID"]) <= last_row.id:
-            #     continue
+            if int(row["ID"]) <= last_row:
+                continue
             # NOTE(picoloto): Replace values like NA to null
             for key, value in row.items():
                 if key in ["Name", "Sex",  "Team", "NOC", "Games", "Season", "City", "Sport", "Event", "Medal"]:

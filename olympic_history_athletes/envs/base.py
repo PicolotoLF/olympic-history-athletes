@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'api',
     'django_filters',
     'rest_framework',
+    'background_task',
 ]
 
 MIDDLEWARE = [
