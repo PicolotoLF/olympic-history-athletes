@@ -49,6 +49,7 @@ class AttributesView(viewsets.ModelViewSet):
     serializer_class = AttributesSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['age', 'height', 'weight', 'year']
+    pagination_class = ResultsSetPagination
 
 
 class GamesView(viewsets.ModelViewSet):
