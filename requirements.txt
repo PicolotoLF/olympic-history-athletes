@@ -7,3 +7,13 @@ pytz==2019.3
 sqlparse==0.3.0
 virtualenv==16.7.9
 whitenoise==5.0.1
+djangorestframework==3.11.0
+django-filter==2.2.0
+kaggle==1.5.6
+requests==2.22.0
+django-background-tasks
+coverage==5.0.2
+model-mommy==2.0.0
+defusedxml==0.6.0
+lxml==4.4.2
+drf-writable-nested==0.5.4
