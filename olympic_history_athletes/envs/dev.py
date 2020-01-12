@@ -11,3 +11,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'mydb.db'),
     }
 }
+#
+# # TODO
+# os.environ.setdefault()
+# os.environ.setdefault()
