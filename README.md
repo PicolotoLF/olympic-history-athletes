@@ -9,17 +9,17 @@ Setup the environments variables:
     <p>KAGGLE_USERNAME={kaggle_username};
     <p>KAGGLE_KEY={kaggle_key}
 </code>
-obs: To generate Kaggle credentials: https://github.com/Kaggle/kaggle-api
+<p>obs: To generate Kaggle credentials: https://github.com/Kaggle/kaggle-api
 
 ### Running Migrations
 After created your <b>virtual environment with virtualenv</b>, in the directory of the project enter the commands:
 <code>
-<p>pip install -r requirements.txt
-<p>python manage.py makemigrations
-<p>python manage.py migrate
-<p>python manage.py runserver
+    <p>pip install -r requirements.txt
+    <p>python manage.py makemigrations
+    <p>python manage.py migrate
+    <p>python manage.py runserver
 </code>
-obs: The database still without data
+<p>obs: The database still without data
 
 ### Tasks
 To run the routine to get the csv from Kaggle and populate the database, it necessary run the command:
