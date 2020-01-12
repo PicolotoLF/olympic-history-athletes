@@ -1,6 +1,6 @@
 # Olympic History Athletes API
 
-##Setup
+## Setup
 
 ### Environment Variables
 Setup the environments variables:
@@ -11,7 +11,7 @@ Setup the environments variables:
 </code>
 obs: To generate Kaggle credentials: https://github.com/Kaggle/kaggle-api
 
-###Running Migrations
+### Running Migrations
 After created your <b>virtual environment with virtualenv</b>, in the directory of the project enter the commands:
 <code>
 <p>pip install -r requirements.txt
