@@ -7,7 +7,7 @@ class Games(models.Model):
         db_table = 'games'
 
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255, unique=True)
+    name = models.CharField(max_length=255, unique=True, null=False)
 
 
 class Team(models.Model):
@@ -16,7 +16,7 @@ class Team(models.Model):
         db_table = 'team'
 
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255, unique=True)
+    name = models.CharField(max_length=255, unique=True, null=False)
 
 
 class Season(models.Model):
@@ -24,7 +24,7 @@ class Season(models.Model):
         db_table = 'season'
 
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255, null=True, unique=True)
+    name = models.CharField(max_length=255, null=False, unique=True)
 
 
 class City(models.Model):
@@ -32,7 +32,7 @@ class City(models.Model):
         db_table = 'city'
 
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255, null=True, unique=True)
+    name = models.CharField(max_length=255, null=False, unique=True)
 
 
 class Sport(models.Model):
@@ -40,7 +40,7 @@ class Sport(models.Model):
         db_table = 'sport'
 
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255, null=True, unique=True)
+    name = models.CharField(max_length=255, null=False, unique=True)
 
 
 class Event(models.Model):
@@ -48,7 +48,7 @@ class Event(models.Model):
         db_table = 'event'
 
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255, null=True, unique=True)
+    name = models.CharField(max_length=255, null=False, unique=True)
 
 
 class Medal(models.Model):
@@ -56,24 +56,7 @@ class Medal(models.Model):
         db_table = 'medal'
 
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255, null=True, unique=True)
-
-
-class Athlete(models.Model):
-    class Meta:
-        db_table = 'athlete'
-
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=255)
-    sex = models.CharField(max_length=10)
-
-    games = models.ForeignKey(Games, on_delete=models.CASCADE)
-    team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    season = models.ForeignKey(Season, on_delete=models.CASCADE)
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
-    sport = models.ForeignKey(Sport, on_delete=models.CASCADE)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    medal = models.ForeignKey(Medal, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, null=False, unique=True)
 
 
 class Attributes(models.Model):
@@ -83,13 +66,28 @@ class Attributes(models.Model):
     class Meta:
         db_table = 'attributes'
 
-    age = models.IntegerField(null=True)
-    height = models.DecimalField(max_digits=15, decimal_places=2, null=True)
-    weight = models.DecimalField(max_digits=15, decimal_places=2, null=True)
-    year = models.IntegerField(null=True)
+    age = models.IntegerField(null=False)
+    height = models.DecimalField(max_digits=15, decimal_places=2, null=False)
+    weight = models.DecimalField(max_digits=15, decimal_places=2, null=False)
+    year = models.IntegerField(null=False)
 
-    athlete = models.OneToOneField(
-        Athlete,
-        on_delete=models.CASCADE,
-        primary_key=True,
-    )
+
+class Athlete(models.Model):
+    class Meta:
+        db_table = 'athlete'
+
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=255, null=False)
+    sex = models.CharField(max_length=10, null=False)
+
+    games = models.ForeignKey(Games, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    season = models.ForeignKey(Season, on_delete=models.CASCADE)
+    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    sport = models.ForeignKey(Sport, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    medal = models.ForeignKey(Medal, on_delete=models.CASCADE)
+    attributes = models.ForeignKey(Attributes, on_delete=models.CASCADE)
+
+
+

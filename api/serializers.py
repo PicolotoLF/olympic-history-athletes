@@ -1,4 +1,6 @@
 from rest_framework import serializers
+from drf_writable_nested.serializers import WritableNestedModelSerializer
+
 from .models import *
 
 
@@ -65,15 +67,15 @@ class AthleteFilterSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class AthleteSerializer(serializers.ModelSerializer):
-    attributes = AttributesSerializer(read_only=True)
-    games = GamesSerializer(read_only=True)
-    team = TeamSerializer(read_only=True)
-    season = SeasonSerializer(read_only=True)
-    city = CitySerializer(read_only=True)
-    sport = SportSerializer(read_only=True)
-    event = EventSerializer(read_only=True)
-    medal = MedalSerializer(read_only=True)
+class AthleteSerializer(WritableNestedModelSerializer):
+    attributes = AttributesSerializer()
+    games = GamesSerializer()
+    team = TeamSerializer()
+    season = SeasonSerializer()
+    city = CitySerializer()
+    sport = SportSerializer()
+    event = EventSerializer()
+    medal = MedalSerializer()
 
     class Meta:
         model = Athlete

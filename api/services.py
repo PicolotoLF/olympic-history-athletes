@@ -74,6 +74,10 @@ def create_objects(dict_from_csv):
         obj = factory_to_check_exists(model, dict_from_csv)
         results["{}".format(model.__name__)] = obj
 
+    attribute = Attributes.objects.create(age=dict_from_csv["Age"], height=dict_from_csv["Height"],
+                                          weight=dict_from_csv["Weight"], year=dict_from_csv["Year"])
+    attribute.save()
+
     athlete = Athlete.objects.create(
         id=int(dict_from_csv["ID"]),
         name=dict_from_csv["Name"],
@@ -84,14 +88,11 @@ def create_objects(dict_from_csv):
         city=results["City"],
         sport=results["Sport"],
         event=results["Event"],
-        medal=results["Medal"]
+        medal=results["Medal"],
+        attributes=attribute
     )
 
-    attribute = Attributes.objects.create(age=dict_from_csv["Age"], height=dict_from_csv["Height"],
-                                          weight=dict_from_csv["Weight"], year=dict_from_csv["Year"], athlete=athlete)
-
     athlete.save()
-    attribute.save()
 
 
 def factory_to_check_exists(object, row):

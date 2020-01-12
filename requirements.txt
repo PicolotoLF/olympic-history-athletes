@@ -14,3 +14,5 @@ requests==2.22.0
 django-background-tasks
 coverage==5.0.2
 model-mommy==2.0.0
+defusedxml==0.6.0
+lxml==4.4.2
